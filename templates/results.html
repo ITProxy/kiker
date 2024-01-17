@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Заполнение результатов - Кикер Турниры</title>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Кикер Турниры</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/main.html" role="button">Главная</a></li>
+            <li><a href="/user_page.html" role="button">Личный кабинет</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h2>Заполнение результатов игры</h2>
+            <div id="games-list">
+                <!-- Блок для обычных игр -->
+                <div class="game">
+                    <label>Игрок 1: <input type="number" min="0" max="10" required></label>
+                    <span>:</span>
+                    <label>Игрок 2: <input type="number" min="0" max="10" required></label>
+                    <button onclick="duplicateGame(this)">Продублировать игру</button>
+                    <button>Отправить на утверждение</button>
+                </div>
+            <!-- Блоки для других игр -->
+        </div>
+        
+        <h2>Результат матча в турнире</h2>
+        <div class="tournament-game">
+            <!-- Блок для игры в турнире -->
+            <div class="game">
+                <label>Игрок 1: <input type="number" min="0" max="10" required></label>
+                <span>:</span>
+                <label>Игрок 2: <input type="number" min="0" max="10" required></label>
+                <button>Отправить на утверждение</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    function duplicateGame(button) {
+        var gameDiv = button.parentElement;
+        var newGameDiv = gameDiv.cloneNode(true);
+        // Удаление кнопки продублировать игру в новом блоке
+        var duplicateButton = newGameDiv.querySelector('button[onclick="duplicateGame(this)"]');
+        if (duplicateButton) {
+            newGameDiv.removeChild(duplicateButton);
+        }
+        gameDiv.parentNode.insertBefore(newGameDiv, gameDiv.nextSibling);
+    }
+</script>
+</body>
+</html>
