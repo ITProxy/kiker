@@ -29,7 +29,7 @@ class Game(db.Model):
 @app.route('/')
 def index():
     # Здесь будет логика для главной страницы
-    return render_template('index.html')
+    return render_template('main.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -45,12 +45,12 @@ def register():
     if request.method == 'POST':
         # Обработка данных формы
         pass
-    return render_template('register.html')
+    return render_template('registration.html')
 
 @app.route('/profile')
 def profile():
     # Логика для личного кабинета пользователя
-    return render_template('profile.html')
+    return render_template('user_page.html')
 
 @app.route('/submit_game', methods=['GET', 'POST'])
 def submit_game():
@@ -58,7 +58,7 @@ def submit_game():
     if request.method == 'POST':
         # Обработка данных формы
         pass
-    return render_template('submit_game.html')
+    return render_template('results.html')
 
 # Запуск приложения
 if __name__ == '__main__':
