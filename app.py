@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 import os
+from config_loader import Config  # Импортируйте класс Config
 
+config = Config() 
 # Инициализация Flask-приложения
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Задаем секретный ключ для сессий
