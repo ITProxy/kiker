@@ -6,7 +6,7 @@ from config_loader import Config  # Импортируйте класс Config
 config = Config() 
 # Инициализация Flask-приложения
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Задаем секретный ключ для сессий
+app.config.update(config.get_flask_config()) # Задаем секретный ключ для сессий
 
 # Конфигурация базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -64,4 +64,5 @@ def submit_game():
 
 # Запуск приложения
 if __name__ == '__main__':
-    app.run(debug = True, port = 80, host = '0.0.0.0')  # Включение режима отладки для локальной разработки
+    server_config = config.get_server_config()
+    app.run(debug=server_config['debug'], port=server_config['port'], host=server_config['host'])
