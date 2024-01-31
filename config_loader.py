@@ -3,7 +3,7 @@ import configparser
 class Config:
     def __init__(self, config_file='config.ini'):
         self.config = configparser.ConfigParser()
-        self.config.read(config_file)
+        self.config.read('config.ini')
     
     def get_flask_config(self):
         return {
